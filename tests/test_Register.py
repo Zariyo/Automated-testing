@@ -74,7 +74,10 @@ class test_Register(unittest.TestCase):
     def test_remove_Student_no_student(self):
         self.assertRaises(Exception, self.tmp.remove_Student, 100)
 
-    def test_add_subjects(self):
+    def test_add_subject(self):
         self.assertEqual(
             {"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [{"subject": "maths", "notes": []}]},
-            self.tmp.add_subjects(2, "maths"))
+            self.tmp.add_subject(2, "maths"))
+
+    def test_add_subject_exception_no_subject(self):
+        self.assertRaises(Exception, self.tmp.add_subject, 2, "spanish")
