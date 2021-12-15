@@ -14,3 +14,6 @@ class test_Register(unittest.TestCase):
 
     def test_addStudent_exception_studentExists(self):
         self.assertRaises(Exception, self.tmp.add_Student, 2, 'Krzysztof', 'Kowal')
+
+    def test_addStudent_exception_id_not_int(self):
+        self.assertRaises(ValueError, self.tmp.add_Student, "abc", 'Adam', 'Nowak')
