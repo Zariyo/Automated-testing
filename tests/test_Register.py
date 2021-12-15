@@ -81,3 +81,6 @@ class test_Register(unittest.TestCase):
 
     def test_add_subject_exception_no_subject(self):
         self.assertRaises(Exception, self.tmp.add_subject, 2, "spanish")
+
+    def test_add_subject_exception_id_not_int(self):
+        self.assertRaises(ValueError, self.tmp.add_subject, "abc", "maths")
