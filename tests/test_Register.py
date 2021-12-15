@@ -67,4 +67,7 @@ class test_Register(unittest.TestCase):
         self.assertRaises(TypeError, self.tmp.edit_Student, 15, None, "Adam", 123)
 
     def test_removeStudent(self):
-        self.assertEqual({"id": 28, "name": "Adam", "surname": "Nowak"}, self.tmp.removeStudent(28))
+        self.assertEqual({"id": 28, "name": "Adam", "surname": "Nowak"}, self.tmp.remove_Student(28))
+
+    def test_removeStudent_id_not_int(self):
+        self.assertRaises(ValueError, self.tmp.remove_Student, "abc")
