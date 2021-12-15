@@ -12,7 +12,12 @@ class Register:
         for stud in self.students:
             if stud['id'] == studId:
                 return stud
+        return None
 
     def add_Student(self, studId, studName, studSurname):
-        self.students.append({"id": studId, "name": studName, "surname": studSurname})
-        return self.get_Student(studId)
+        if self.get_Student(studId) is None:
+            self.students.append({"id": studId, "name": studName, "surname": studSurname})
+            return self.get_Student(studId)
+        else:
+            raise Exception("Student ID already taken. Perhaps the student is already in the register?")
+
