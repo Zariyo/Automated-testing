@@ -9,6 +9,8 @@ class test_Register(unittest.TestCase):
         self.tmp = register
         self.tmp.add_Student(2, 'Krzysztof', 'Kowal')
         self.tmp.add_Student(28, 'Adam', 'Nowak')
+        self.tmp.add_Student(42, 'Jan', 'Kowalski')
+        self.tmp.add_subject(42, 'geography')
 
     def test_add_Student(self):
         self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": []},
@@ -84,3 +86,8 @@ class test_Register(unittest.TestCase):
 
     def test_add_subject_exception_id_not_int(self):
         self.assertRaises(ValueError, self.tmp.add_subject, "abc", "maths")
+
+    def test_edit_subject(self):
+        self.assertEqual(
+            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "maths", "notes": []}]},
+            self.tmp.edit_subject(42, "geography", "maths"))
