@@ -21,6 +21,8 @@ class Register:
                     studId = int(float(str(studId)))
                 else:
                     raise ValueError("Id must be an integer")
+            if type(studName) is not str:
+                raise TypeError("Student name must be a string")
             self.students.append({"id": studId, "name": studName, "surname": studSurname})
             return self.get_Student(studId)
         else:
@@ -36,5 +38,6 @@ class Register:
                 if updateSurname is not None:
                     stud['surname'] = updateSurname
                 return stud
+        raise Exception("Student with such id does not exist")
 
 
