@@ -56,4 +56,14 @@ class Register:
                 return stud
         raise Exception("Student with such id does not exist")
 
+    def removeStudent(self, studId):
+        i=0
+        for stud in self.students:
+            if stud['id'] is studId:
+                tmp = self.students[i]
+                del self.students[i]
+                return tmp
+            i += 1
+
+
 
