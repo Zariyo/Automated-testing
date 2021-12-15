@@ -25,7 +25,7 @@ class Register:
                 raise TypeError("Student name must be a string")
             if type(studSurname) is not str:
                 raise TypeError("Student surname must be a string")
-            self.students.append({"id": studId, "name": studName, "surname": studSurname})
+            self.students.append({"id": studId, "name": studName, "surname": studSurname, "subjects": []})
             return self.get_Student(studId)
         else:
             raise Exception("Student ID already taken. Perhaps the student is already in the register?")
@@ -70,6 +70,15 @@ class Register:
                 return tmp
             i += 1
         raise Exception("Student with such id does not exist")
+
+    def add_subjects(self, studId, subject):
+        for stud in self.students:
+            if stud['id'] == studId:
+                stud['subjects'].append({
+                    "subject": subject,
+                    "notes": []
+                })
+                return stud
 
 
 
