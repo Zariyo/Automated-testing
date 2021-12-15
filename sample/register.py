@@ -73,6 +73,11 @@ class Register:
         raise Exception("Student with such id does not exist")
 
     def add_subject(self, studId, subject):
+        if type(studId) is not int:
+            if type(studId) in [float, str]:
+                studId = int(float(str(studId)))
+            else:
+                raise ValueError("Id must be an integer")
         if subject not in self.subjects:
             raise Exception("No such subject is taught right now")
         else:
