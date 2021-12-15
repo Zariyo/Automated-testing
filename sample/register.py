@@ -69,6 +69,7 @@ class Register:
                 del self.students[i]
                 return tmp
             i += 1
+        raise Exception("Student with such id does not exist")
 
 
 
