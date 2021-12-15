@@ -94,3 +94,6 @@ class test_Register(unittest.TestCase):
 
     def test_edit_subject_no_subject(self):
         self.assertRaises(Exception, self.tmp.add_subject, 2, "spanish", "maths")
+
+    def test_edit_subject_no_subject_update(self):
+        self.assertRaises(Exception, self.tmp.add_subject, 2, "geography", "spanish")
