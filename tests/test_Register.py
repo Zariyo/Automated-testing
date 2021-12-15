@@ -91,3 +91,6 @@ class test_Register(unittest.TestCase):
         self.assertEqual(
             {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "maths", "notes": []}]},
             self.tmp.edit_subject(42, "geography", "maths"))
+
+    def test_edit_subject_no_subject(self):
+        self.assertRaises(Exception, self.tmp.add_subject, 2, "spanish", "maths")
