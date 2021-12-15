@@ -23,6 +23,8 @@ class Register:
                     raise ValueError("Id must be an integer")
             if type(studName) is not str:
                 raise TypeError("Student name must be a string")
+            if type(studSurname) is not str:
+                raise TypeError("Student surname must be a string")
             self.students.append({"id": studId, "name": studName, "surname": studSurname})
             return self.get_Student(studId)
         else:
