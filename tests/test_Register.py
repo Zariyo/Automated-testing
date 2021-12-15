@@ -21,3 +21,7 @@ class test_Register(unittest.TestCase):
     def test_addStudent_id_as_float(self):
         self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal"},
                          self.tmp.add_Student(1.0, 'Adam', 'Kowal'))
+
+    def test_addStudent_id_as_string(self):
+        self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal"},
+                         self.tmp.add_Student("1.0", 'Adam', 'Kowal'))
