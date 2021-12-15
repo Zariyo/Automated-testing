@@ -1,6 +1,7 @@
 from sample.register import *
 import unittest
 
+
 class test_Register(unittest.TestCase):
 
     def setUp(self):
@@ -34,3 +35,7 @@ class test_Register(unittest.TestCase):
 
     def test_addStudent_exception_id_as_empty_object(self):
         self.assertRaises(ValueError, self.tmp.add_Student, {}, 'Adam', 'Nowak')
+
+    def test_editStudent(self):
+        self.assertEqual({"id": 2, "name": "Krzysiek", "surname": "Kowalski"},
+                         self.tmp.edit_Student(2, None, "Krzysiek", "Kowalski"))
