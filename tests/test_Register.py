@@ -52,3 +52,6 @@ class test_Register(unittest.TestCase):
 
     def test_editStudent_exception_id_not_int(self):
         self.assertRaises(Exception, self.tmp.edit_Student, "abc", None, "Adam", "Kamien")
+
+    def test_editStudent_exception_id_as_empty_list(self):
+        self.assertRaises(ValueError, self.tmp.edit_Student, 15, [], "Adam", "Kamien")
