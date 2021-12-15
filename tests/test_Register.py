@@ -61,3 +61,6 @@ class test_Register(unittest.TestCase):
 
     def test_editStudent_exception_name_not_string(self):
         self.assertRaises(TypeError, self.tmp.edit_Student, 15, None, 123, "Kamien")
+
+    def test_editStudent_exception_surname_not_string(self):
+        self.assertRaises(TypeError, self.tmp.edit_Student, 15, None, "Adam", 123)
