@@ -4,6 +4,7 @@ import unittest
 class Register:
     def __init__(self, students):
         self.students = students
+        self.subjects = ["maths", "physics", "english", "biology", "geography", "arts"]
 
     def get_allStudents(self):
         return self.students
@@ -71,14 +72,17 @@ class Register:
             i += 1
         raise Exception("Student with such id does not exist")
 
-    def add_subjects(self, studId, subject):
-        for stud in self.students:
-            if stud['id'] == studId:
-                stud['subjects'].append({
-                    "subject": subject,
-                    "notes": []
-                })
-                return stud
+    def add_subject(self, studId, subject):
+        if subject not in self.subjects:
+            raise Exception("No such subject is taught right now")
+        else:
+            for stud in self.students:
+                if stud['id'] == studId:
+                    stud['subjects'].append({
+                        "subject": subject,
+                        "notes": []
+                    })
+                    return stud
 
 
 
