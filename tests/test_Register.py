@@ -28,3 +28,6 @@ class test_Register(unittest.TestCase):
 
     def test_addStudent_exception_id_as_None(self):
         self.assertRaises(ValueError, self.tmp.add_Student, None, 'Adam', 'Nowak')
+
+    def test_addStudent_exception_id_as_empty_list(self):
+        self.assertRaises(ValueError, self.tmp.add_Student, [], 'Adam', 'Nowak')
