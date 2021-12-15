@@ -82,11 +82,19 @@ class Register:
             raise Exception("No such subject is taught right now")
         else:
             for stud in self.students:
-                if stud['id'] == studId:
+                if stud['id'] is studId:
                     stud['subjects'].append({
                         "subject": subject,
                         "notes": []
                     })
+                    return stud
+
+    def edit_subject(self, studId, subject, updsubject):
+        for stud in self.students:
+            if stud['id'] is studId:
+                for subj in stud['subjects']:
+                    if subj["subject"] is subject:
+                        subj["subject"] = updsubject
                     return stud
 
 
