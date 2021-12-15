@@ -10,7 +10,7 @@ class Register:
 
     def get_Student(self, studId):
         for stud in self.students:
-            if stud['id'] == studId:
+            if stud['id'] is studId:
                 return stud
         return None
 
@@ -25,4 +25,16 @@ class Register:
             return self.get_Student(studId)
         else:
             raise Exception("Student ID already taken. Perhaps the student is already in the register?")
+
+    def edit_Student(self, studId, updateId=None, updateName=None, updateSurname=None):
+        for stud in self.students:
+            if stud['id'] is studId:
+                if updateId is not None:
+                    stud['id'] = updateId
+                if updateName is not None:
+                    stud['name'] = updateName
+                if updateSurname is not None:
+                    stud['surname'] = updateSurname
+                return stud
+
 
