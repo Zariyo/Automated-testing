@@ -16,6 +16,8 @@ class Register:
 
     def add_Student(self, studId, studName, studSurname):
         if self.get_Student(studId) is None:
+            if type(studId) is not int:
+                raise ValueError("Id must be an integer")
             self.students.append({"id": studId, "name": studName, "surname": studSurname})
             return self.get_Student(studId)
         else:
