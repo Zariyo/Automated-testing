@@ -71,3 +71,6 @@ class test_Register(unittest.TestCase):
 
     def test_removeStudent_id_not_int(self):
         self.assertRaises(ValueError, self.tmp.remove_Student, "abc")
+
+    def test_removeStudent_no_student(self):
+        self.assertRaises(Exception, self.tmp.remove_Student, 100)
