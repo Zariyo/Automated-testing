@@ -157,10 +157,13 @@ class test_Register(unittest.TestCase):
         self.assertRaises(ValueError, self.tmp.edit_notes, 55, "maths", ["b", "c"])
 
     def test_edit_notes_exception_id_not_int(self):
-        self.assertRaises(Exception, self.tmp.edit_notes, "abc", "maths", 6)
+        self.assertRaises(ValueError, self.tmp.edit_notes, "abc", "maths", 6)
 
     def test_edit_notes_exception_student_no_subject(self):
         self.assertRaises(Exception, self.tmp.edit_notes, 55, "history", [1,2,3])
 
     def test_get_subject_average(self):
         self.assertEqual(3.88, self.tmp.get_subject_average(55, "maths"))
+
+    def test_get_subject_average_exception_id_not_int(self):
+        self.assertRaises(ValueError, self.tmp.get_subject_average, "abc", "maths")
