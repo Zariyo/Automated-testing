@@ -142,6 +142,7 @@ class Register:
                 raise Exception("This student does not study such subject")
 
     def edit_notes(self, studId, subject, notes):
+        studId = self.check_id(studId)
         if type(notes) not in [int, float, list]:
             raise ValueError("Notes must be float, int or list")
         if type(notes) is list:
