@@ -124,3 +124,6 @@ class test_Register(unittest.TestCase):
         self.assertEqual(
             {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5, 5, 3]}]},
             self.tmp.add_notes(42, "geography", [5,5,3]))
+
+    def test_add_notes_id_not_int(self):
+        self.assertRaises(Exception, self.tmp.add_notes, "abc", "geography", 6)
