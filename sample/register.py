@@ -194,6 +194,7 @@ class Register:
             return stud
 
     def edit_behavior_notice(self, studId, oldNotice, newNotice):
+        studId = self.check_id(studId)
         for stud in self.students:
             if stud['id'] is studId:
                 i=0
