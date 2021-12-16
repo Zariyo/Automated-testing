@@ -165,6 +165,7 @@ class Register:
         return round(sum/(len(notes)), 2)
 
     def get_subject_average(self, studId, subject):
+        studId = self.check_id(studId)
         for stud in self.students:
             if stud['id'] is studId:
                 for subj in stud['subjects']:
