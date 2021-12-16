@@ -193,6 +193,16 @@ class Register:
                 stud['notices'].append(notice)
             return stud
 
+    def edit_behavior_notice(self, studId, oldNotice, newNotice):
+        for stud in self.students:
+            if stud['id'] is studId:
+                i=0
+                for notice in stud['notices']:
+                    if notice is oldNotice:
+                        stud['notices'][i]=newNotice
+                        return stud
+                    i+=1
+
 
 
 
