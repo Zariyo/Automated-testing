@@ -185,6 +185,7 @@ class Register:
                 return sum/len(stud['subjects'])
 
     def add_behavior_notice(self, studId, notice):
+        studId = self.check_id(studId)
         for stud in self.students:
             if stud['id'] is studId:
                 stud['notices'].append(notice)
