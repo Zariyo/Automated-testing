@@ -14,6 +14,8 @@ class test_Register(unittest.TestCase):
         self.tmp.add_Student(55, 'Kamil', 'Stoszek')
         self.tmp.add_subject(55, 'maths')
         self.tmp.add_notes(55, 'maths', [4,6,2,3.5])
+        self.tmp.add_subject(55, 'geography')
+        self.tmp.add_notes(55, 'geography', [1,2,3])
 
     def test_add_Student(self):
         self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": []},
@@ -149,7 +151,7 @@ class test_Register(unittest.TestCase):
     def test_edit_notes(self):
         self.assertEqual(
             {"id": 55, "name": "Kamil", "surname": "Stoszek",
-             "subjects": [{"subject": "maths", "notes": [2, 2.5, 3]}]},
+             "subjects": [{"subject": "maths", "notes": [2, 2.5, 3]}, {'notes': [1, 2, 3], 'subject': 'geography'}]},
             self.tmp.edit_notes(55,'maths',[2,2.5,3])
         )
 
@@ -167,3 +169,6 @@ class test_Register(unittest.TestCase):
 
     def test_get_subject_average_exception_id_not_int(self):
         self.assertRaises(ValueError, self.tmp.get_subject_average, "abc", "maths")
+
+    def test_get_student_average(self):
+        self.assertEqual(2.94, self.tmp.get_student_average(55))
