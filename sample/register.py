@@ -70,11 +70,7 @@ class Register:
         raise Exception("Student with such id does not exist")
 
     def add_subject(self, studId, subject):
-        if type(studId) is not int:
-            if type(studId) in [float, str]:
-                studId = int(float(str(studId)))
-            else:
-                raise ValueError("Id must be an integer")
+        studId = self.check_id(studId)
         if subject not in self.subjects:
             raise Exception("No such subject is taught right now")
         else:
@@ -87,6 +83,7 @@ class Register:
                     return stud
 
     def edit_subject(self, studId, subject, updsubject):
+        studId = self.check_id(studId)
         if subject not in self.subjects or updsubject not in self.subjects:
             raise Exception("No such subject is taught right now")
         for stud in self.students:
@@ -98,6 +95,7 @@ class Register:
                 return Exception("This student does not attend this subject")
 
     def remove_subject(self, studId, subject):
+        studId = self.check_id(studId)
         exists=False
         for stud in self.students:
             if stud['id'] is studId:
