@@ -172,3 +172,6 @@ class test_Register(unittest.TestCase):
 
     def test_get_student_average(self):
         self.assertEqual(2.94, self.tmp.get_student_average(55))
+
+    def test_get_student_average_exception_id_not_int(self):
+        self.assertRaises(ValueError, self.tmp.get_student_average, "abc")
