@@ -6,6 +6,15 @@ class Register:
         self.students = students
         self.subjects = ["maths", "physics", "english", "biology", "geography", "arts"]
 
+    def check_id(self, passedId):
+        if type(passedId) is not int:
+            if type(passedId) in [float, str]:
+                passedId = int(float(str(passedId)))
+                return passedId
+            else:
+                raise ValueError("Id must be an integer")
+        return passedId
+
     def get_allStudents(self):
         return self.students
 
@@ -17,11 +26,7 @@ class Register:
 
     def add_Student(self, studId, studName, studSurname):
         if self.get_Student(studId) is None:
-            if type(studId) is not int:
-                if type(studId) in [float, str]:
-                    studId = int(float(str(studId)))
-                else:
-                    raise ValueError("Id must be an integer")
+            studId = self.check_id(studId)
             if type(studName) is not str:
                 raise TypeError("Student name must be a string")
             if type(studSurname) is not str:
@@ -32,11 +37,7 @@ class Register:
             raise Exception("Student ID already taken. Perhaps the student is already in the register?")
 
     def edit_Student(self, studId, updateId=None, updateName=None, updateSurname=None):
-        if type(studId) is not int:
-            if type(studId) in [float, str]:
-                studId = int(float(str(studId)))
-            else:
-                raise ValueError("Id must be an integer")
+        studId = self.check_id(studId)
         if type(updateName) is not str:
             raise TypeError("Student name must be a string")
         if type(updateSurname) is not str:
@@ -115,6 +116,7 @@ class Register:
                         del stud['subjects'][i]
                         return stud
                     i+=1
+                raise Exception("This student doest not study such subject")
 
 
 
