@@ -137,6 +137,16 @@ class Register:
                         return stud
                 raise Exception("This student does not study such subject")
 
+    def edit_notes(self, studId, subject, notes):
+        for stud in self.students:
+            if stud['id'] is studId:
+                for subj in stud['subjects']:
+                    if subj['subject'] is subject:
+                        if type(notes) is list:
+                            subj['notes'] = notes
+                        if type(notes) is int:
+                            subj['notes'] = list(notes)
+                        return stud
 
 
 
