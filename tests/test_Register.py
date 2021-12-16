@@ -176,6 +176,9 @@ class test_Register(unittest.TestCase):
     def test_get_student_average_exception_id_not_int(self):
         self.assertRaises(ValueError, self.tmp.get_student_average, "abc")
 
-    def test_add_student_behavioral_notice(self):
+    def test_add_behavior_notice(self):
         self.assertEqual({"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [], "notices": ["Uses bad language"]},
                          self.tmp.add_behavior_notice(2, "Uses bad language"))
+
+    def test_add_behavior_notice_exception_id_not_int(self):
+        self.assertRaises(ValueError, self.tmp.add_behavior_notice, "abc", "Bad language")
