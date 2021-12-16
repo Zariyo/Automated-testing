@@ -132,7 +132,13 @@ class test_Register(unittest.TestCase):
         self.assertRaises(Exception, self.tmp.add_notes, 42, "maths", 6)
 
     def test_add_notes_exception_student_incorrect_note(self):
-        self.assertRaises(ValueError, self.tmp.add_notes, 42, "maths", "b")
+        self.assertRaises(ValueError, self.tmp.add_notes, 42, "geography", "b")
 
     def test_add_notes_exception_student_incorrect_notes(self):
-        self.assertRaises(ValueError, self.tmp.add_notes, 42, "maths", [1, 3.4, 5, "a"])
+        self.assertRaises(ValueError, self.tmp.add_notes, 42, "geography", [1, 3.4, 5, "a"])
+
+    def test_add_notes_floats_as_notes(self):
+        self.assertEqual(
+            {"id": 42, "name": "Jan", "surname": "Kowalski",
+             "subjects": [{"subject": "geography", "notes": [1, 3.40, 5.12, 4.13]}]},
+            self.tmp.add_notes(42, "geography", [1, 3.4, 5.12, 4.126]))
