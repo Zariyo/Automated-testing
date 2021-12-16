@@ -125,5 +125,11 @@ class test_Register(unittest.TestCase):
             {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5, 5, 3]}]},
             self.tmp.add_notes(42, "geography", [5,5,3]))
 
-    def test_add_notes_id_not_int(self):
+    def test_add_notes_exception_id_not_int(self):
         self.assertRaises(Exception, self.tmp.add_notes, "abc", "geography", 6)
+
+    def test_add_notes_exception_student_no_subject(self):
+        self.assertRaises(Exception, self.tmp.add_notes, 42, "maths", 6)
+
+    def test_add_notes_exception_student_incorrect_note(self):
+        self.assertRaises(ValueError, self.tmp.add_notes, 42, "maths", "b")
