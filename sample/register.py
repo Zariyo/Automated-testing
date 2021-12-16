@@ -185,6 +185,8 @@ class Register:
                 return sum/len(stud['subjects'])
 
     def add_behavior_notice(self, studId, notice):
+        if type(notice) is not str:
+            raise TypeError("Notice must be a string")
         studId = self.check_id(studId)
         for stud in self.students:
             if stud['id'] is studId:
