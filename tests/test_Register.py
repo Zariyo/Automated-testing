@@ -114,3 +114,8 @@ class test_Register(unittest.TestCase):
 
     def test_remove_subject_exception_no_subject(self):
         self.assertRaises(Exception, self.tmp.remove_subject, 42, "maths")
+
+    def test_add_notes_single_note(self):
+        self.assertEqual(
+            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5]}]},
+            self.tmp.add_notes(42, "geography", 5))
