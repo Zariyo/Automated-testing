@@ -117,7 +117,11 @@ class Register:
             if stud['id'] is studId:
                 for subj in stud['subjects']:
                     if subj['subject'] is subject:
-                        subj['notes'].append(notes)
+                        if type(notes) is int:
+                            subj['notes'].append(notes)
+                        if type(notes) is list:
+                            for note in notes:
+                                subj['notes'].append(note)
                         return stud
 
 
