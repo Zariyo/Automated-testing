@@ -154,4 +154,7 @@ class test_Register(unittest.TestCase):
         )
 
     def test_edit_notes_incorrect_notes(self):
-        self.assertRaises(ValueError, self.tmp.add_notes, 55, "maths", ["b", "c"])
+        self.assertRaises(ValueError, self.tmp.edit_notes, 55, "maths", ["b", "c"])
+
+    def test_edit_notes_id_not_int(self):
+        self.assertRaises(Exception, self.tmp.edit_notes, "abc", "maths", 6)
