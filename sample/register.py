@@ -156,6 +156,7 @@ class Register:
                         if type(notes) is int:
                             subj['notes'] = list(notes)
                         return stud
+                raise Exception("This student does not study such subject")
 
 
 
