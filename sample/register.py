@@ -175,6 +175,14 @@ class Register:
                         else:
                             return self.get_notes_average(subj['notes'])
 
+    def get_student_average(self, studId):
+        for stud in self.students:
+            if stud['id'] is studId:
+                sum = 0
+                for subj in stud['subjects']:
+                    sum += self.get_notes_average(subj['notes'])
+                return sum/len(stud['subjects'])
+
 
 
 
