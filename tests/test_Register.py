@@ -133,3 +133,6 @@ class test_Register(unittest.TestCase):
 
     def test_add_notes_exception_student_incorrect_note(self):
         self.assertRaises(ValueError, self.tmp.add_notes, 42, "maths", "b")
+
+    def test_add_notes_exception_student_incorrect_notes(self):
+        self.assertRaises(ValueError, self.tmp.add_notes, 42, "maths", [1, 3.4, 5, "a"])
