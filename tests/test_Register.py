@@ -153,8 +153,11 @@ class test_Register(unittest.TestCase):
             self.tmp.edit_notes(55,'maths',[2,2.5,3])
         )
 
-    def test_edit_notes_incorrect_notes(self):
+    def test_edit_notes_exception_incorrect_notes(self):
         self.assertRaises(ValueError, self.tmp.edit_notes, 55, "maths", ["b", "c"])
 
-    def test_edit_notes_id_not_int(self):
+    def test_edit_notes_exception_id_not_int(self):
         self.assertRaises(Exception, self.tmp.edit_notes, "abc", "maths", 6)
+
+    def test_edit_notes_exception_student_no_subject(self):
+        self.assertRaises(Exception, self.tmp.edit_notes, 55, "history", [1,2,3])
