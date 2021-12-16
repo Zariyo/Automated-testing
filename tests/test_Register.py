@@ -119,3 +119,8 @@ class test_Register(unittest.TestCase):
         self.assertEqual(
             {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5]}]},
             self.tmp.add_notes(42, "geography", 5))
+
+    def test_add_notes_list_of_notes(self):
+        self.assertEqual(
+            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5, 5, 3]}]},
+            self.tmp.add_notes(42, "geography", [5,5,3]))
