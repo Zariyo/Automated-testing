@@ -152,3 +152,6 @@ class test_Register(unittest.TestCase):
              "subjects": [{"subject": "maths", "notes": [2, 2.5, 3]}]},
             self.tmp.edit_notes(55,'maths',[2,2.5,3])
         )
+
+    def test_edit_notes_incorrect_notes(self):
+        self.assertRaises(ValueError, self.tmp.add_notes, 55, "maths", ["b", "c"])
