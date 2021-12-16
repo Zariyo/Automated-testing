@@ -59,11 +59,7 @@ class Register:
         raise Exception("Student with such id does not exist")
 
     def remove_Student(self, studId):
-        if type(studId) is not int:
-            if type(studId) in [float, str]:
-                studId = int(float(str(studId)))
-            else:
-                raise ValueError("Id must be an integer")
+        studId = self.check_id(studId)
         i=0
         for stud in self.students:
             if stud['id'] is studId:
