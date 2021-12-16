@@ -31,7 +31,7 @@ class Register:
                 raise TypeError("Student name must be a string")
             if type(studSurname) is not str:
                 raise TypeError("Student surname must be a string")
-            self.students.append({"id": studId, "name": studName, "surname": studSurname, "subjects": []})
+            self.students.append({"id": studId, "name": studName, "surname": studSurname, "subjects": [], "notices": []})
             return self.get_Student(studId)
         else:
             raise Exception("Student ID already taken. Perhaps the student is already in the register?")
@@ -184,6 +184,11 @@ class Register:
                     sum += self.get_notes_average(subj['notes'])
                 return sum/len(stud['subjects'])
 
+    def add_behavior_notice(self, studId, notice):
+        for stud in self.students:
+            if stud['id'] is studId:
+                stud['notices'].append(notice)
+            return stud
 
 
 
