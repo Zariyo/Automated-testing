@@ -18,7 +18,7 @@ class test_Register(unittest.TestCase):
         self.tmp.add_notes(55, 'geography', [1,2,3])
 
     def test_add_Student(self):
-        self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": []},
+        self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": [], "notices": []},
                          self.tmp.add_Student(1, 'Adam', 'Kowal'))
 
     def test_add_Student_exception_studentExists(self):
@@ -28,11 +28,11 @@ class test_Register(unittest.TestCase):
         self.assertRaises(ValueError, self.tmp.add_Student, "abc", 'Adam', 'Nowak')
 
     def test_add_Student_id_as_float(self):
-        self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": []},
+        self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": [], "notices": []},
                          self.tmp.add_Student(1.0, 'Adam', 'Kowal'))
 
     def test_add_Student_id_as_string(self):
-        self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": []},
+        self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": [], "notices": []},
                          self.tmp.add_Student("1.0", 'Adam', 'Kowal'))
 
     def test_add_Student_exception_id_as_None(self):
@@ -51,7 +51,7 @@ class test_Register(unittest.TestCase):
         self.assertRaises(TypeError, self.tmp.add_Student, 4, 'Adam', 20)
 
     def test_edit_Student(self):
-        self.assertEqual({"id": 2, "name": "Krzysiek", "surname": "Kowalski", "subjects": []},
+        self.assertEqual({"id": 2, "name": "Krzysiek", "surname": "Kowalski", "subjects": [], "notices": []},
                          self.tmp.edit_Student(2, None, "Krzysiek", "Kowalski"))
 
     def test_edit_Student_exception_noStudent(self):
@@ -73,7 +73,7 @@ class test_Register(unittest.TestCase):
         self.assertRaises(TypeError, self.tmp.edit_Student, 15, None, "Adam", 123)
 
     def test_remove_Student(self):
-        self.assertEqual({"id": 28, "name": "Adam", "surname": "Nowak", "subjects": []}, self.tmp.remove_Student(28))
+        self.assertEqual({"id": 28, "name": "Adam", "surname": "Nowak", "subjects": [], "notices": []}, self.tmp.remove_Student(28))
 
     def test_remove_Student_id_not_int(self):
         self.assertRaises(ValueError, self.tmp.remove_Student, "abc")
@@ -83,7 +83,7 @@ class test_Register(unittest.TestCase):
 
     def test_add_subject(self):
         self.assertEqual(
-            {"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [{"subject": "maths", "notes": []}]},
+            {"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [{"subject": "maths", "notes": []}], "notices": []},
             self.tmp.add_subject(2, "maths"))
 
     def test_add_subject_exception_no_subject(self):
@@ -94,7 +94,7 @@ class test_Register(unittest.TestCase):
 
     def test_edit_subject(self):
         self.assertEqual(
-            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "maths", "notes": []}]},
+            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "maths", "notes": []}], "notices": []},
             self.tmp.edit_subject(42, "geography", "maths"))
 
     def test_edit_subject_exception_no_subject(self):
@@ -108,7 +108,7 @@ class test_Register(unittest.TestCase):
 
     def test_remove_subject(self):
         self.assertEqual(
-            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": []},
+            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [], "notices": []},
             self.tmp.remove_subject(42, "geography"))
 
     def test_remove_subject_exception_no_id(self):
@@ -122,12 +122,12 @@ class test_Register(unittest.TestCase):
 
     def test_add_notes_single_note(self):
         self.assertEqual(
-            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5]}]},
+            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5]}], "notices": []},
             self.tmp.add_notes(42, "geography", 5))
 
     def test_add_notes_list_of_notes(self):
         self.assertEqual(
-            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5, 5, 3]}]},
+            {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": [5, 5, 3]}], "notices": []},
             self.tmp.add_notes(42, "geography", [5,5,3]))
 
     def test_add_notes_exception_id_not_int(self):
@@ -145,13 +145,13 @@ class test_Register(unittest.TestCase):
     def test_add_notes_floats_as_notes(self):
         self.assertEqual(
             {"id": 42, "name": "Jan", "surname": "Kowalski",
-             "subjects": [{"subject": "geography", "notes": [1, 3.40, 5.12, 4.13]}]},
+             "subjects": [{"subject": "geography", "notes": [1, 3.40, 5.12, 4.13]}], "notices": []},
             self.tmp.add_notes(42, "geography", [1, 3.4, 5.12, 4.126]))
 
     def test_edit_notes(self):
         self.assertEqual(
             {"id": 55, "name": "Kamil", "surname": "Stoszek",
-             "subjects": [{"subject": "maths", "notes": [2, 2.5, 3]}, {'notes': [1, 2, 3], 'subject': 'geography'}]},
+             "subjects": [{"subject": "maths", "notes": [2, 2.5, 3]}, {'notes': [1, 2, 3], 'subject': 'geography'}], "notices": []},
             self.tmp.edit_notes(55,'maths',[2,2.5,3])
         )
 
@@ -175,3 +175,7 @@ class test_Register(unittest.TestCase):
 
     def test_get_student_average_exception_id_not_int(self):
         self.assertRaises(ValueError, self.tmp.get_student_average, "abc")
+
+    def test_add_student_behavioral_notice(self):
+        self.assertEqual({"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [], "notices": ["Uses bad language"]},
+                         self.tmp.add_behavior_notice(2, "Uses bad language"))
