@@ -112,6 +112,14 @@ class Register:
                     i+=1
                 raise Exception("This student doest not study such subject")
 
+    def add_notes(self, studId, subject, notes):
+        for stud in self.students:
+            if stud['id'] is studId:
+                for subj in stud['subjects']:
+                    if subj['subject'] is subject:
+                        subj['notes'].append(notes)
+                        return stud
+
 
 
 
