@@ -100,5 +100,19 @@ class Register:
                     return stud
                 return Exception("This student does not attend this subject")
 
+    def remove_subject(self, studId, subject):
+        for stud in self.students:
+            if stud['id'] is studId:
+                i=0
+                for subj in stud['subjects']:
+                    if subj["subject"] is subject:
+                        del stud['subjects'][i]
+                        return stud
+                    i+=1
+
+
+
+
+
 
 
