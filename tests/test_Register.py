@@ -11,6 +11,9 @@ class test_Register(unittest.TestCase):
         self.tmp.add_Student(28, 'Adam', 'Nowak')
         self.tmp.add_Student(42, 'Jan', 'Kowalski')
         self.tmp.add_subject(42, 'geography')
+        self.tmp.add_Student(55, 'Kamil', 'Stoszek')
+        self.tmp.add_subject(55, 'maths')
+        self.tmp.add_notes(55, 'maths', [4,6,2,3.5])
 
     def test_add_Student(self):
         self.assertEqual({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": []},
@@ -142,3 +145,10 @@ class test_Register(unittest.TestCase):
             {"id": 42, "name": "Jan", "surname": "Kowalski",
              "subjects": [{"subject": "geography", "notes": [1, 3.40, 5.12, 4.13]}]},
             self.tmp.add_notes(42, "geography", [1, 3.4, 5.12, 4.126]))
+
+    def test_edit_notes(self):
+        self.assertEqual(
+            {"id": 55, "name": "Kamil", "surname": "Stoszek",
+             "subjects": [{"subject": "maths", "notes": [2, 2.5, 3]}]},
+            self.tmp.edit_notes(55,'maths',[2,2.5,3])
+        )
