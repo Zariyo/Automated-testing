@@ -92,13 +92,16 @@ class test_Register(unittest.TestCase):
             {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "maths", "notes": []}]},
             self.tmp.edit_subject(42, "geography", "maths"))
 
-    def test_edit_subject_no_subject(self):
+    def test_edit_subject_exception_no_subject(self):
         self.assertRaises(Exception, self.tmp.add_subject, 2, "spanish", "maths")
 
-    def test_edit_subject_no_subject_update(self):
+    def test_edit_subject_exception_no_subject_update(self):
         self.assertRaises(Exception, self.tmp.add_subject, 2, "geography", "spanish")
 
     def test_remove_subject(self):
         self.assertEqual(
             {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": []},
             self.tmp.remove_subject(42, "geography"))
+
+    def test_remove_subject_exception_no_id(self):
+        self.assertRaises(Exception, self.tmp.remove_subject, 254, "geography")
