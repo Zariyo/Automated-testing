@@ -124,6 +124,7 @@ class Register:
                             for note in notes:
                                 subj['notes'].append(note)
                         return stud
+                raise Exception("This student does not study such subject")
 
 
 
