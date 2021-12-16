@@ -95,6 +95,9 @@ class test_Register(unittest.TestCase):
     def test_edit_subject_exception_no_subject(self):
         self.assertRaises(Exception, self.tmp.add_subject, 2, "spanish", "maths")
 
+    def test_edit_subject_exception_id_not_int(self):
+        self.assertRaises(Exception, self.tmp.add_subject, "abc", "geography", "maths")
+
     def test_edit_subject_exception_no_subject_update(self):
         self.assertRaises(Exception, self.tmp.add_subject, 2, "geography", "spanish")
 
@@ -105,6 +108,9 @@ class test_Register(unittest.TestCase):
 
     def test_remove_subject_exception_no_id(self):
         self.assertRaises(Exception, self.tmp.remove_subject, 254, "geography")
+
+    def test_remove_subject_exception_id_not_int(self):
+        self.assertRaises(Exception, self.tmp.remove_subject, "abc", "geography")
 
     def test_remove_subject_exception_no_subject(self):
         self.assertRaises(Exception, self.tmp.remove_subject, 42, "maths")
