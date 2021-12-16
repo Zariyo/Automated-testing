@@ -185,3 +185,10 @@ class test_Register(unittest.TestCase):
 
     def test_add_behavior_notice_exception_notice_not_string(self):
         self.assertRaises(TypeError, self.tmp.add_behavior_notice, 2, 123)
+
+    def test_edit_behavior_notice(self):
+        self.tmp.add_behavior_notice(2, "Uses bad language")
+        def test_add_behavior_notice(self):
+            self.assertEqual(
+                {"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [], "notices": ["Beats his friends"]},
+                self.tmp.edit_behavior_notice(2, "Uses bad language", "Beats his friends"))
