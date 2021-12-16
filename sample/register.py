@@ -112,18 +112,22 @@ class Register:
                     i+=1
                 raise Exception("This student doest not study such subject")
 
+    def check_notes(self, notes):
+        i=0
+        for note in notes:
+            if type(note) not in [float, int]:
+                raise ValueError("Note must be a float or int")
+            if type(note) is float:
+                note = round(note, 2)
+                notes[i]=note
+            i+=1
+        return notes
+
     def add_notes(self, studId, subject, notes):
         if type(notes) not in [int, float, list]:
             raise ValueError("Notes must be float, int or list")
         if type(notes) is list:
-            i=0
-            for note in notes:
-                if type(note) not in [float, int]:
-                    raise ValueError("Note must be a float or int")
-                if type(note) is float:
-                    note = round(note, 2)
-                    notes[i] = note
-                i+=1
+            notes = self.check_notes(notes)
         studId = self.check_id(studId)
         for stud in self.students:
             if stud['id'] is studId:
@@ -138,6 +142,10 @@ class Register:
                 raise Exception("This student does not study such subject")
 
     def edit_notes(self, studId, subject, notes):
+        if type(notes) not in [int, float, list]:
+            raise ValueError("Notes must be float, int or list")
+        if type(notes) is list:
+            notes = self.check_notes(notes)
         for stud in self.students:
             if stud['id'] is studId:
                 for subj in stud['subjects']:
