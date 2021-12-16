@@ -158,6 +158,24 @@ class Register:
                         return stud
                 raise Exception("This student does not study such subject")
 
+    def get_notes_average(self, notes):
+        sum = 0
+        for note in notes:
+            sum+=note
+        return round(sum/(len(notes)), 2)
+
+    def get_subject_average(self, studId, subject):
+        for stud in self.students:
+            if stud['id'] is studId:
+                for subj in stud['subjects']:
+                    if subj['subject'] is subject:
+                        if type(subj['notes']) is int:
+                            return subj['notes']
+                        else:
+                            return self.get_notes_average(subj['notes'])
+
+
+
 
 
 
