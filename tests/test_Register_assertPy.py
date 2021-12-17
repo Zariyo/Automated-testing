@@ -43,3 +43,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
 
     def test_get_subject_average_is_close_to(self):
         assert_that(self.tmp.get_subject_average(55, "maths")).is_close_to(4, 0.5)
+
+    def test_get_student_average_is_between(self):
+        assert_that(self.tmp.get_student_average(55)).is_between(2.75,3)
