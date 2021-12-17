@@ -81,6 +81,7 @@ class Register:
                         "notes": []
                     })
                     return stud
+            raise Exception("Student with such id does not exist")
 
     def edit_subject(self, studId, subject, updsubject):
         studId = self.check_id(studId)
@@ -93,6 +94,7 @@ class Register:
                         subj["subject"] = updsubject
                     return stud
                 return Exception("This student does not attend this subject")
+        raise Exception("Student with such id does not exist")
 
     def remove_subject(self, studId, subject):
         studId = self.check_id(studId)
@@ -140,6 +142,7 @@ class Register:
                                 subj['notes'].append(note)
                         return stud
                 raise Exception("This student does not study such subject")
+        raise Exception("Student with such id does not exist")
 
     def edit_notes(self, studId, subject, notes):
         studId = self.check_id(studId)
@@ -157,6 +160,7 @@ class Register:
                             subj['notes'] = list(notes)
                         return stud
                 raise Exception("This student does not study such subject")
+        raise Exception("Student with such id does not exist")
 
     def get_notes_average(self, notes):
         sum = 0
@@ -174,6 +178,7 @@ class Register:
                             return subj['notes']
                         else:
                             return self.get_notes_average(subj['notes'])
+        raise Exception("Student with such id does not exist")
 
     def get_student_average(self, studId):
         studId = self.check_id(studId)
@@ -183,6 +188,7 @@ class Register:
                 for subj in stud['subjects']:
                     sum += self.get_notes_average(subj['notes'])
                 return sum/len(stud['subjects'])
+        raise Exception("Student with such id does not exist")
 
     def add_behavior_notice(self, studId, notice):
         if type(notice) is not str:
@@ -192,6 +198,7 @@ class Register:
             if stud['id'] is studId:
                 stud['notices'].append(notice)
             return stud
+        raise Exception("Student with such id does not exist")
 
     def edit_behavior_notice(self, studId, oldNotice, newNotice):
         if type(newNotice) is not str or type(oldNotice) is not str:
@@ -205,6 +212,7 @@ class Register:
                         stud['notices'][i]=newNotice
                         return stud
                     i+=1
+        raise Exception("Student with such id does not exist")
 
 
 
