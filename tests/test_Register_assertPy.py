@@ -26,3 +26,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
     def test_edit_student_is_iterable(self):
         assert_that(self.tmp.edit_Student(2,None, "Janek", "Wisnia")).is_iterable()
 
+    def test_add_subject_contains_entry(self):
+        assert_that(self.tmp.add_subject(2, "maths")).contains_entry({'subjects': [{'subject': 'maths', 'notes': []}]})
+
