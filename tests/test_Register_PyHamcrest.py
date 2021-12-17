@@ -41,3 +41,8 @@ class test_Register_PyHamcrest(unittest.TestCase):
     def test_get_student_average_less_than(self):
         assert_that(self.tmp.get_student_average(55), less_than(3))
 
+    def test_remove_student_has_length(self):
+        length = len(self.tmp.get_allStudents())
+        self.tmp.remove_Student(55)
+        assert_that(self.tmp.get_allStudents(), has_length(length-1))
+
