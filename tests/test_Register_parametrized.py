@@ -26,3 +26,12 @@ class TestAgeCalc(unittest.TestCase):
     def test_parametrized_add_student(self, studId, studName, studSurname, expectedOutput):
         self.assertEqual(self.tmp.add_Student(studId, studName, studSurname), expectedOutput)
 
+    @parameterized.expand([
+        ("ab", "Adam", "Janowski"),
+        ({}, "Jan", "Adamowski"),
+        ([], "Przemyslaw", "Piotrowski"),
+        (None, "Piotr", "Przemyslowski")
+    ])
+
+    def test_parametrized_add_student_exceptions_bad_id(self, studId, studName, studSurname):
+        self.assertRaises(ValueError, self.tmp.add_Student,studId, studName, studSurname)
