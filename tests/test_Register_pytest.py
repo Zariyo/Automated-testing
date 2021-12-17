@@ -26,3 +26,6 @@ def test_add_student_exception():
 def test_edit_student():
     assert reg.edit_Student(2, None, "Patryk", None) == {"id": 2, "name": "Patryk", "surname": "Kowal", "subjects": [], "notices": []}
 
+def test_edit_student_exception():
+    with pytest.raises(Exception):
+        reg.edit_Student(2, None, 12, None)
