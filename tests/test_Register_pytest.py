@@ -29,3 +29,6 @@ def test_edit_student():
 def test_edit_student_exception():
     with pytest.raises(Exception):
         reg.edit_Student(2, None, 12, None)
+
+def test_remove_student():
+    assert reg.remove_Student(2) == {"id": 2, "name": "Patryk", "surname": "Kowal", "subjects": [], "notices": []}
