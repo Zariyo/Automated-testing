@@ -23,3 +23,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
     def test_edit_student_is_object(self):
         assert_that(self.tmp.edit_Student(2, 15, "Karol", "Wojtylski"), is_(object))
 
+    def test_add_subject_has_entry(self):
+        assert_that(self.tmp.add_subject(2, "maths"), has_entry("subjects", [{"subject": "maths", "notes": []}]))
+
