@@ -65,3 +65,12 @@ class TestAgeCalc(unittest.TestCase):
 
     def test_parametrized_add_subject(self, studId, subject, expectedOutput):
         self.assertEqual(self.tmp.add_subject(studId, subject), expectedOutput)
+
+    @parameterized.expand([
+        ("2", "football"),
+        (None, "maths"),
+        (2, 12)
+    ])
+
+    def test_parametrized_add_subject_exceptions(self, studId, subject):
+        self.assertRaises(Exception, self.tmp.add_subject, studId, subject)
