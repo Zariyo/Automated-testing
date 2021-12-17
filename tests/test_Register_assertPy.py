@@ -37,3 +37,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
 
     def test_add_subject_does_not_contain_entry(self):
         assert_that(self.tmp.add_subject(2, "maths")).does_not_contain_entry({'subjects': [{'subject': 'physics', 'notes': []}]})
+
+    def test_add_notes_is_not_none(self):
+        assert_that(self.tmp.add_notes(55, "geography", [4,5])).is_not_none()
