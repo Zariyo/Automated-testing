@@ -43,3 +43,6 @@ def test_add_subject():
 def test_add_subject_exception():
     with pytest.raises(Exception):
         reg.add_subject(28, "mathematics")
+
+def test_get_student_average():
+    assert reg.get_student_average(55) == 2.94
