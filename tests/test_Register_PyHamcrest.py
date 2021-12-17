@@ -35,3 +35,5 @@ class test_Register_PyHamcrest(unittest.TestCase):
     def test_edit_subject_exception_subject_not_taught(self):
         assert_that(calling(self.tmp.edit_subject).with_args(2, "maths", "german"), raises(Exception))
 
+    def test_get_subject_average_close_to(self):
+        assert_that(self.tmp.get_subject_average(55, "maths"), close_to(4, 2))
