@@ -29,3 +29,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
     def test_add_subject_contains_entry(self):
         assert_that(self.tmp.add_subject(2, "maths")).contains_entry({'subjects': [{'subject': 'maths', 'notes': []}]})
 
+    def test_edit_subject_contains_value(self):
+        assert_that(self.tmp.edit_subject(55, "maths", "physics")).contains_value([{'subject': 'physics', 'notes': [4, 6, 2, 3.5]}, {'subject': 'geography', 'notes': [1, 2, 3]}])
+
