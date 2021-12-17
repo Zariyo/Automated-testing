@@ -20,3 +20,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
     def test_add_student_equals(self):
         assert_that(self.tmp.add_Student(1, 'Adam', 'Kowal'), equal_to({"id": 1, "name": "Adam", "surname": "Kowal", "subjects": [], "notices": []}))
 
+    def test_edit_student_is_object(self):
+        assert_that(self.tmp.edit_Student(2, 15, "Karol", "Wojtylski"), is_(object))
+
