@@ -35,3 +35,13 @@ class TestAgeCalc(unittest.TestCase):
 
     def test_parametrized_add_student_exceptions_bad_id(self, studId, studName, studSurname):
         self.assertRaises(ValueError, self.tmp.add_Student,studId, studName, studSurname)
+
+    @parameterized.expand([
+        ("2", None, "Krzysiu", "Kowalski", {"id": 2, "name": "Krzysiu", "surname": "Kowalski", "subjects": [], "notices": []}),
+        (42, 43, "Janek", "Kowal", {"id": 43, "name": "Janek", "surname": "Kowal", "subjects": [{'notes': [], 'subject': 'geography'}], "notices": []}),
+        (55, None, None, "Stoch", {"id": 55, "name": "Kamil", "surname": "Stoch", "subjects": [{'notes': [4, 6, 2, 3.5], 'subject': 'maths'},
+              {'notes': [1, 2, 3], 'subject': 'geography'}], "notices": []})
+    ])
+
+    def test_parametrized_edit_student(self, studId, updId, updName, updSurname, expectedOutput):
+        self.assertEqual(self.tmp.edit_Student(studId, updId, updName, updSurname), expectedOutput)
