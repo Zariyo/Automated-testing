@@ -32,3 +32,7 @@ def test_edit_student_exception():
 
 def test_remove_student():
     assert reg.remove_Student(2) == {"id": 2, "name": "Patryk", "surname": "Kowal", "subjects": [], "notices": []}
+
+def test_remove_student_exception():
+    with pytest.raises(Exception):
+        reg.remove_Student("O")
