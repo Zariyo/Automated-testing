@@ -29,3 +29,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
     def test_add_notes_has_value(self):
         assert_that(self.tmp.add_notes(42, "geography", [1,2,3,4]), has_value([{'subject': 'geography', 'notes': [1, 2, 3, 4]}]))
 
+    def test_add_behavior_notice_not_None(self):
+        assert_that(self.tmp.add_behavior_notice(2, "Bad language"), not_none())
+
