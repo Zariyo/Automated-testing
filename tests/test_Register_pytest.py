@@ -19,3 +19,7 @@ reg.add_notes(55, 'geography', [1,2,3])
 def test_add_student():
     assert reg.add_Student(3, "Ewa", "Robak") == {"id": 3, "name": "Ewa", "surname": "Robak", "subjects": [], "notices": []}
 
+def test_add_student_exception():
+    with pytest.raises(Exception):
+        reg.add_Student("ab", "Jan", "Robak")
+
