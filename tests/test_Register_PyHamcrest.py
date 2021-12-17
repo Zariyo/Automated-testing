@@ -32,3 +32,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
     def test_add_behavior_notice_not_None(self):
         assert_that(self.tmp.add_behavior_notice(2, "Bad language"), not_none())
 
+    def test_edit_subject_exception_subject_not_taught(self):
+        assert_that(calling(self.tmp.edit_subject).with_args(2, "maths", "german"), raises(Exception))
+
