@@ -198,4 +198,8 @@ class test_Register(unittest.TestCase):
 
     def test_edit_behavior_notice_exception_newNotice_not_string(self):
         self.tmp.add_behavior_notice(2, "Uses bad language")
-        self.assertRaises(TypeError, self.tmp.edit_behavior_notice, "abc", "Uses bad language", 123)
+        self.assertRaises(TypeError, self.tmp.edit_behavior_notice, 2, "Uses bad language", 123)
+
+    def test_edit_behavior_notice_exception_oldNotice_not_string(self):
+        self.tmp.add_behavior_notice(2, "Uses bad language")
+        self.assertRaises(TypeError, self.tmp.edit_behavior_notice, 2, 123, "Bad language")
