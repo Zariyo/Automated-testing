@@ -40,3 +40,6 @@ class test_Register_PyHamcrest(unittest.TestCase):
 
     def test_add_notes_is_not_none(self):
         assert_that(self.tmp.add_notes(55, "geography", [4,5])).is_not_none()
+
+    def test_get_subject_average_is_close_to(self):
+        assert_that(self.tmp.get_subject_average(55, "maths")).is_close_to(4, 0.5)
