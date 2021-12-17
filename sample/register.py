@@ -38,9 +38,9 @@ class Register:
 
     def edit_Student(self, studId, updateId=None, updateName=None, updateSurname=None):
         studId = self.check_id(studId)
-        if type(updateName) is not str:
+        if type(updateName) is not str and updateName is not None:
             raise TypeError("Student name must be a string")
-        if type(updateSurname) is not str:
+        if type(updateSurname) is not str and updateSurname is not None:
             raise TypeError("Student surname must be a string")
         if type(updateId) is not int and updateId is not None:
             if type(updateId) in [float, str]:
