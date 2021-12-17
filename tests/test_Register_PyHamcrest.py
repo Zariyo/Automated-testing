@@ -46,3 +46,5 @@ class test_Register_PyHamcrest(unittest.TestCase):
         self.tmp.remove_Student(55)
         assert_that(self.tmp.get_allStudents(), has_length(length-1))
 
+    def test_edit_notes_has_key_all_of(self):
+        assert_that(self.tmp.edit_notes(55, "geography", [4,5,5]), all_of(has_key("subjects"), has_value([{'subject': 'maths', 'notes': [4, 6, 2, 3.5]}, {'subject': 'geography', 'notes': [4, 5, 5]}])))
