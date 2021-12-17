@@ -45,3 +45,12 @@ class TestAgeCalc(unittest.TestCase):
 
     def test_parametrized_edit_student(self, studId, updId, updName, updSurname, expectedOutput):
         self.assertEqual(self.tmp.edit_Student(studId, updId, updName, updSurname), expectedOutput)
+
+    @parameterized.expand([
+        ("2", None, 12, "Kowalski"),
+        (None, 43, "Janek", "Kowal"),
+        (55, None, None, {"Stoch"})
+    ])
+
+    def test_parametrized_edit_student_exceptions(self, studId,updId,updName,updSurname):
+        self.assertRaises(Exception, self.tmp.edit_Student, studId, updId, updName, updSurname)
