@@ -54,3 +54,14 @@ class TestAgeCalc(unittest.TestCase):
 
     def test_parametrized_edit_student_exceptions(self, studId,updId,updName,updSurname):
         self.assertRaises(Exception, self.tmp.edit_Student, studId, updId, updName, updSurname)
+
+    @parameterized.expand([
+        (2, "maths", {"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [{"subject": "maths", "notes": []}], "notices": []}),
+        (2, "geography", {"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [{"subject": "geography", "notes": []}], "notices": []}),
+        (42, "maths", {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": []}, {"subject": "maths", "notes": []}], "notices": []}),
+        (55, "physics", {"id": 55, "name": "Kamil", "surname": "Stoszek", "subjects": [{"subject": "maths", "notes": [4,6,2,3.5]},{'notes': [1, 2, 3], 'subject': 'geography'}, {"subject": "physics", "notes": []}], "notices": []}),
+        (2, "arts", {"id": 2, "name": "Krzysztof", "surname": "Kowal", "subjects": [{"subject": "arts", "notes": []}], "notices": []})
+    ])
+
+    def test_parametrized_add_subject(self, studId, subject, expectedOutput):
+        self.assertEqual(self.tmp.add_subject(studId, subject), expectedOutput)
