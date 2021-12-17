@@ -22,3 +22,7 @@ class test_Register_PyHamcrest(unittest.TestCase):
 
     def test_edit_student_is_instance_of_object(self):
         assert_that(self.tmp.edit_Student(2,None, "Janek", "Wisnia")).is_instance_of(object)
+
+    def test_edit_student_is_iterable(self):
+        assert_that(self.tmp.edit_Student(2,None, "Janek", "Wisnia")).is_iterable()
+
