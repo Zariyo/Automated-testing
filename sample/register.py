@@ -194,7 +194,7 @@ class Register:
             return stud
 
     def edit_behavior_notice(self, studId, oldNotice, newNotice):
-        if type(newNotice) is not str:
+        if type(newNotice) is not str or type(oldNotice) is not str:
             raise TypeError("Notice must be a string")
         studId = self.check_id(studId)
         for stud in self.students:
