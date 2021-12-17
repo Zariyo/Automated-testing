@@ -1,5 +1,6 @@
 import unittest
 from assertpy import *
+from assertpy import add_extension
 from sample.register import *
 import unittest
 
@@ -16,6 +17,13 @@ class test_Register_PyHamcrest(unittest.TestCase):
         self.tmp.add_notes(55, 'maths', [4,6,2,3.5])
         self.tmp.add_subject(55, 'geography')
         self.tmp.add_notes(55, 'geography', [1,2,3])
+
+    def has_scholarship(self):
+        if self.val < 4.5:
+            self.error(f'{self.val} is less than 4.5!')
+        return self
+
+    add_extension(has_scholarship)
 
     def test_add_student_is_equal(self):
         assert_that(self.tmp.add_Student(12, "Jan", "Wisniewski")).is_equal_to({"id": 12, "name": "Jan", "surname": "Wisniewski", "subjects": [], "notices": []})
@@ -46,3 +54,8 @@ class test_Register_PyHamcrest(unittest.TestCase):
 
     def test_get_student_average_is_between(self):
         assert_that(self.tmp.get_student_average(55)).is_between(2.75,3)
+
+    def test_get_student_average_has_scholarship(self):
+        self.tmp.add_subject(2, "maths")
+        self.tmp.add_notes(2, "maths", [5,5,5])
+        assert_that(self.tmp.get_student_average(2)).has_scholarship()
