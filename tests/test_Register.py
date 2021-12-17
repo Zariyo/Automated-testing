@@ -8,7 +8,6 @@ class test_Register(unittest.TestCase):
         register = Register([])
         self.tmp = register
         self.tmp.add_Student(2, 'Krzysztof', 'Kowal')
-        self.tmp.add_Student(28, 'Adam', 'Nowak')
         self.tmp.add_Student(42, 'Jan', 'Kowalski')
         self.tmp.add_subject(42, 'geography')
         self.tmp.add_Student(55, 'Kamil', 'Stoszek')
@@ -73,6 +72,7 @@ class test_Register(unittest.TestCase):
         self.assertRaises(TypeError, self.tmp.edit_Student, 15, None, "Adam", 123)
 
     def test_remove_Student(self):
+        self.tmp.add_Student(28, 'Adam', 'Nowak')
         self.assertEqual({"id": 28, "name": "Adam", "surname": "Nowak", "subjects": [], "notices": []}, self.tmp.remove_Student(28))
 
     def test_remove_Student_id_not_int(self):
