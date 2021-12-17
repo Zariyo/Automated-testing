@@ -46,3 +46,7 @@ def test_add_subject_exception():
 
 def test_get_student_average():
     assert reg.get_student_average(55) == 2.94
+
+def test_get_student_average_exception():
+    with pytest.raises(Exception):
+        reg.get_student_average(102)
