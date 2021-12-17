@@ -36,3 +36,6 @@ def test_remove_student():
 def test_remove_student_exception():
     with pytest.raises(Exception):
         reg.remove_Student("O")
+
+def test_add_subject():
+    assert reg.add_subject(28, "maths") == {"id": 28, "name": "Adam", "surname": "Nowak", "subjects": [{"subject": "maths", "notes": []}], "notices": []}
