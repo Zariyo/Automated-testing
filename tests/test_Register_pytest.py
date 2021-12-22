@@ -1,20 +1,16 @@
 from parameterized import parameterized, parameterized_class
 from sample.register import *
+from sample.student import *
 import unittest
 import pytest
 
 
-register = Register([])
+register = Register([Student(2, "Krzysztof", "Kowal").returnObject(),
+                             Student(42, "Jan", "Kowalski", [{"subject": "geography", "notes": []}]).returnObject(),
+                             Student(55, "Kamil", "Stoszek", [{"subject": "maths", "notes": [4, 6, 2, 3.5]},
+                                                              {"subject": "geography",
+                                                               "notes": [1, 2, 3]}]).returnObject()])
 reg = register
-reg.add_Student(2, 'Krzysztof', 'Kowal')
-reg.add_Student(28, 'Adam', 'Nowak')
-reg.add_Student(42, 'Jan', 'Kowalski')
-reg.add_subject(42, 'geography')
-reg.add_Student(55, 'Kamil', 'Stoszek')
-reg.add_subject(55, 'maths')
-reg.add_notes(55, 'maths', [4,6,2,3.5])
-reg.add_subject(55, 'geography')
-reg.add_notes(55, 'geography', [1,2,3])
 
 def test_add_student():
     assert reg.add_Student(3, "Ewa", "Robak") == {"id": 3, "name": "Ewa", "surname": "Robak", "subjects": [], "notices": []}
@@ -38,7 +34,7 @@ def test_remove_student_exception():
         reg.remove_Student("O")
 
 def test_add_subject():
-    assert reg.add_subject(28, "maths") == {"id": 28, "name": "Adam", "surname": "Nowak", "subjects": [{"subject": "maths", "notes": []}], "notices": []}
+    assert reg.add_subject(42, "maths") == {"id": 42, "name": "Jan", "surname": "Kowalski", "subjects": [{"subject": "geography", "notes": []}, {"subject": "maths", "notes": []}], "notices": []}
 
 def test_add_subject_exception():
     with pytest.raises(Exception):

@@ -1,22 +1,18 @@
 import unittest
 from assertpy import *
 from assertpy import add_extension
+from sample.student import *
 from sample.register import *
 import unittest
 
 class test_Register_PyHamcrest(unittest.TestCase):
     def setUp(self):
-        register = Register([])
+        register = Register([Student(2, "Krzysztof", "Kowal").returnObject(),
+                             Student(42, "Jan", "Kowalski", [{"subject": "geography", "notes": []}]).returnObject(),
+                             Student(55, "Kamil", "Stoszek", [{"subject": "maths", "notes": [4, 6, 2, 3.5]},
+                                                              {"subject": "geography",
+                                                               "notes": [1, 2, 3]}]).returnObject()])
         self.tmp = register
-        self.tmp.add_Student(2, 'Krzysztof', 'Kowal')
-        self.tmp.add_Student(28, 'Adam', 'Nowak')
-        self.tmp.add_Student(42, 'Jan', 'Kowalski')
-        self.tmp.add_subject(42, 'geography')
-        self.tmp.add_Student(55, 'Kamil', 'Stoszek')
-        self.tmp.add_subject(55, 'maths')
-        self.tmp.add_notes(55, 'maths', [4,6,2,3.5])
-        self.tmp.add_subject(55, 'geography')
-        self.tmp.add_notes(55, 'geography', [1,2,3])
 
     def has_scholarship(self):
         if self.val < 4.5:
